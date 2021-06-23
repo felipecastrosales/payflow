@@ -21,27 +21,24 @@ class SocialLoginButton extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Expanded(
-              flex: 1,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(AppImages.google),
-                  SizedBox(width: 12),
-                  Container(height: 56, width: 1, color: AppColors.stroke)
-                ],
+            Container(
+              height: 56,
+              decoration: BoxDecoration(
+                border: Border(right: BorderSide(color: AppColors.stroke)),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 2, right: 2),
+                child: Image.asset(AppImages.google),
               ),
             ),
             Expanded(
               flex: 4,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Enter with Google',
-                    style: AppTextStyles.buttonGrey,
-                  ),
-                ],
+              child: Align(
+                alignment: Alignment.center,
+                child: Text(
+                  'Enter with Google', 
+                  style: AppTextStyles.buttonGrey,
+                ),
               ),
             ),
           ],
