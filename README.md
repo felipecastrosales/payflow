@@ -6,7 +6,7 @@
 
 - ✅ Liftoff 💪
 - ✅ Maximum Speed 🏃‍♂️
-- 🔄 In Orbit 👨‍🚀 
+- ✅ In Orbit 👨‍🚀 
 - 🔄 Landing 🔥
 - 🔄 Surface Exploration ⚡
 - 🔄 Accelerating your Career 🚀
