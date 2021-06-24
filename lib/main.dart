@@ -25,7 +25,7 @@ class _AppFirebaseState extends State<AppFirebase> {
           return Material(
             child: Center(
               child: Text(
-                'Opa, erro Inesperado! :/',
+                'Oops, Unexpected error! :/',
                 textDirection: TextDirection.ltr,
               ),
             ),

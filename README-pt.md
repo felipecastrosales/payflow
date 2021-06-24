@@ -7,7 +7,7 @@
 - ✅ Liftoff 💪
 - ✅ Maximum Speed 🏃‍♂️
 - ✅ In Orbit 👨‍🚀 
-- 🔄 Landing 🔥
+- ✅ Landing 🔥
 - 🔄 Surface Exploration ⚡
 - 🔄 Acelerando sua Carreira 🚀
 - 🔄 Encerramento da Missão 💜
