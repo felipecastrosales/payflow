@@ -19,7 +19,6 @@ class _HomePageState extends State<HomePage> {
       Container(color: Colors.blue),
       Container(color: Colors.green),
     ];
-
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(152),
@@ -70,7 +69,7 @@ class _HomePageState extends State<HomePage> {
             ),
             GestureDetector(
               onTap: () {
-                debugPrint('Clicou');
+                Navigator.pushNamed(context, '/barcode_scanner');
               },
               child: Container(
                 width: 56,
