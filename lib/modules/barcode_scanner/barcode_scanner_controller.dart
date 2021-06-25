@@ -68,11 +68,7 @@ class BarcodeScannerController {
       cameraController!.startImageStream((cameraImage) async {
         if (status.stopScanner == false) {
           try {
-            final WriteBuffer allBytes = WriteBuffer();
-            for (Plane plane in cameraImage.planes) {
-              allBytes.putUint8List(plane.bytes);
-            }
-            final bytes = allBytes.done().buffer.asUint8List();
+            final bytes = cameraImage.planes[8].bytes;
             final Size imageSize = Size(
                 cameraImage.width.toDouble(), cameraImage.height.toDouble());
             final InputImageRotation imageRotation =
@@ -89,6 +85,7 @@ class BarcodeScannerController {
                 );
               },
             ).toList();
+
             final inputImageData = InputImageData(
               size: imageSize,
               imageRotation: imageRotation,
