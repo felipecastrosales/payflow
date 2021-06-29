@@ -10,6 +10,7 @@ class SetLabelButtons extends StatelessWidget {
   final String labelSecondary;
   final VoidCallback onTapSecondary;
   final bool enablePrimaryColor;
+  final bool enableSecondaryColor;
 
   const SetLabelButtons({
     Key? key,
@@ -18,6 +19,7 @@ class SetLabelButtons extends StatelessWidget {
     required this.labelSecondary,
     required this.onTapSecondary,
     this.enablePrimaryColor = false,
+    this.enableSecondaryColor = false,
   }) : super(key: key);
 
   @override
