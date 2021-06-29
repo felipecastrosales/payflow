@@ -23,7 +23,10 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
     controller.getAvailableCameras();
     controller.statusNotifier.addListener(() {
       if (controller.status.hasBarcode) {
-        Navigator.pushReplacementNamed(context, '/insert_boleto');
+        Navigator.pushReplacementNamed(
+          context, '/insert_boleto',
+          arguments: controller.status.barcode,
+        );
       }
     });
     super.initState();
@@ -45,7 +48,6 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
             builder: (_, status, __) {
               if (status.showCamera) {
                 return Container(
-                  color: Colors.blue,
                   child: controller.cameraController!.buildPreview(),
                 );
               } else {
@@ -83,7 +85,7 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
               bottomNavigationBar: SetLabelButtons(
                 labelPrimary: 'Insert boleto code',
                 onTapPrimary: () {
-                  controller.status = BarcodeScannerStatus.error('Error');
+                  Navigator.pushReplacementNamed(context, "/insert_boleto");
                 },
                 labelSecondary: 'Add from gallery',
                 onTapSecondary: controller.scanWithImagePicker,
@@ -97,15 +99,17 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
                 return Align(
                   alignment: Alignment.bottomLeft,
                   child: BottomSheetWidget(
-                    labelPrimary: 'Rescan',
-                    onTapPrimary: () {
-                      controller.getAvailableCameras();
-                    },
-                    labelSecondary: 'Enter code',
-                    onTapSecondary: () {},
                     title: 'Unable to identify a barcode.',
                     subtitle: 
-                      'Try scanning again or enter your bill of exchange code.'
+                      'Try scanning again or enter your bill of exchange code.',
+                    labelPrimary: 'Rescan',
+                    onTapPrimary: () {
+                      controller.scanWithCamera();
+                    },
+                    labelSecondary: 'Enter code',
+                    onTapSecondary: () {
+                      Navigator.pushReplacementNamed(context, "/insert_boleto");
+                    },
                   ),
                 );
               } else {

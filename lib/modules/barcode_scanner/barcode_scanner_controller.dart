@@ -5,16 +5,19 @@ import 'package:camera/camera.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:image_picker/image_picker.dart';
 
-import 'barcode_scanner_status.dart';
+import '../barcode_scanner/barcode_scanner_status.dart';
 
 class BarcodeScannerController {
   final statusNotifier =
       ValueNotifier<BarcodeScannerStatus>(BarcodeScannerStatus());
   BarcodeScannerStatus get status => statusNotifier.value;
   set status(BarcodeScannerStatus status) => statusNotifier.value = status;
-  var barcodeScanner = GoogleMlKit.vision.barcodeScanner();
-  CameraController? cameraController;
+
+  final barcodeScanner = GoogleMlKit.vision.barcodeScanner();
+
   InputImage? imagePicker;
+
+  CameraController? cameraController;
 
   void getAvailableCameras() async {
     try {
@@ -38,14 +41,16 @@ class BarcodeScannerController {
       for (Barcode item in barcodes) {
         barcode = item.value.displayValue;
       }
+
       if (barcode != null && status.barcode.isEmpty) {
         status = BarcodeScannerStatus.barcode(barcode);
         cameraController!.dispose();
         await barcodeScanner.close();
       }
+
       return;
     } catch (e) {
-      print('Reading error: ${e.toString()}');
+      print('Error lecture ${e.toString()}');
     }
   }
 
@@ -59,7 +64,7 @@ class BarcodeScannerController {
     status = BarcodeScannerStatus.available();
     Future.delayed(Duration(seconds: 20)).then((value) {
       if (status.hasBarcode == false)
-        status = BarcodeScannerStatus.error('Timeout de leitura de boleto');
+        status = BarcodeScannerStatus.error('Timeout of boleto lecture');
     });
   }
 
@@ -68,7 +73,11 @@ class BarcodeScannerController {
       cameraController!.startImageStream((cameraImage) async {
         if (status.stopScanner == false) {
           try {
-            final bytes = cameraImage.planes[8].bytes;
+            final WriteBuffer allBytes = WriteBuffer();
+            for (Plane plane in cameraImage.planes) {
+              allBytes.putUint8List(plane.bytes);
+            }
+            final bytes = allBytes.done().buffer.asUint8List();
             final Size imageSize = Size(
                 cameraImage.width.toDouble(), cameraImage.height.toDouble());
             final InputImageRotation imageRotation =
@@ -93,9 +102,8 @@ class BarcodeScannerController {
               planeData: planeData,
             );
             final inputImageCamera = InputImage.fromBytes(
-              bytes: bytes, 
-              inputImageData: inputImageData,
-            );
+                bytes: bytes, inputImageData: inputImageData);
+
             scannerBarCode(inputImageCamera);
           } catch (e) {
             print(e);
