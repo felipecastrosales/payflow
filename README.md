@@ -8,7 +8,7 @@
 - ✅ Maximum Speed 🏃‍♂️
 - ✅ In Orbit 👨‍🚀 
 - ✅ Landing 🔥
-- 🔄 Surface Exploration ⚡
+- ✅ Surface Exploration ⚡
 - 🔄 Accelerating your Career 🚀
 - 🔄 Mission Closure 💜
 
@@ -68,7 +68,7 @@
 - Manager Boletos
 - Among many other amazing things! 
 - In development
-  
+
    </p>
 
 ---
