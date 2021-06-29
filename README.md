@@ -66,7 +66,7 @@
    - Ticket name
    - Maturity
    - Price
-   - QRCode Code
+   - QRCode
 - Query Statements
 - Among many other amazing things!
 
