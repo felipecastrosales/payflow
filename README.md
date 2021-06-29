@@ -10,7 +10,7 @@
 - ✅ Landing 🔥
 - ✅ Surface Exploration ⚡
 - ✅ Accelerating your Career 🚀
-- 🔄 Mission Closure 💜
+- ✅ Mission Closure 💜
 
 ---
 
@@ -23,7 +23,7 @@
    - [Layout 🎨](#layout-)
    - [Functionalities 🛠️](#functionalities-%EF%B8%8F)
    - [Challenges and Learnings along the way 🤯](#challenges-and-learnings-along-the-way-)
-   - [Notion Files 📋](#notion-files-)
+   - [Notion Files 📋](#notion-file-)
    - [How to Use 🤔](#how-to-use-)
    - [How to Contribute 💪](#how-to-contribute-)
    - [License 📝](#license-)
@@ -35,15 +35,10 @@
 <h2 align="center">About 📖</h2>
 
 <p align="center">
-    This project was developed at Next Level Week, an intense week of studies, networking, friendship, group work, accompanied by a sensational project developed by Rocketseat from the 20th to the 27th of June. <br>
-    This application is a Boletos and Payments Manager, which contains several features, which will soon be developed. <br>
+    This project was developed at Next Level Week, an intense week of studies, networking, friendship, group work, accompanied by a sensational project developed by Rocketseat from the 20th to the 27th of June.<br>
+    This application is a Billet Management, containing several features, which will soon be developed and explained.<br>
 </p>
 
----
-
-<h2 align="center">Preview 📱</h2>
-
-   > * The application is still under development...
 ---
 
 <h2 align="center">Layout 🎨</h2>
@@ -64,10 +59,17 @@
 
    <p>
    
-- Manager Payments 
-- Manager Boletos
-- Among many other amazing things! 
-- In development
+- Payment and Bills Management
+- Social login with Google
+- Firebase MLKit with QRCode Reading
+- Camera Usage
+- Boleto Registration
+   - Ticket name
+   - Maturity
+   - Price
+   - QRCode Code
+- Query Statements
+- Among many other amazing things!
 
    </p>
 
@@ -81,7 +83,7 @@
 
 ---
 
-<h2 align="center">Notion Files 📋</h2>
+<h2 align="center">Notion File 📋</h2>
 
 - [Flutter Trail](https://www.notion.so/NLW-Together-Conte-dos-complementares-ae22125e899549efb2d4e360b5ee5ca3) 🚀
 
@@ -132,7 +134,7 @@
 
    ---
 
-   >This project was developed with ❤️ by **[@Felipe Sales](https://www.linkedin.com/in/felipecastrosales/)**, with the instructor **[@GabulDev](https://www.linkedin.com/in/gabuldev/)**, in #NextLevelWeek05 from **[Rocketseat](https://rocketseat.com.br/)**.<br>
+   >This project was developed with ❤️ by **[@Felipe Sales](https://www.linkedin.com/in/felipecastrosales/)**, with the instructor **[@GabulDev](https://www.linkedin.com/in/gabuldev/)**, in #NextLevelWeek from **[Rocketseat](https://rocketseat.com.br/)**.<br>
    If it helped you, give ⭐, contribute, it will help me too 😉
 
 ---
