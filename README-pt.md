@@ -9,7 +9,7 @@
 - ✅ In Orbit 👨‍🚀 
 - ✅ Landing 🔥
 - ✅ Surface Exploration ⚡
-- 🔄 Acelerando sua Carreira 🚀
+- ✅ Acelerando sua Carreira 🚀
 - 🔄 Encerramento da Missão 💜
 
 ---
