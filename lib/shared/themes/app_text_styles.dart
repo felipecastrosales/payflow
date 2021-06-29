@@ -1,6 +1,8 @@
+
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+
 import '.././themes/app_colors.dart';
 
 class AppTextStyles {
@@ -93,6 +95,12 @@ class AppTextStyles {
     fontSize: 15,
     fontWeight: FontWeight.w700,
     color: AppColors.background,
+  );
+
+  static final input = GoogleFonts.inter(
+    fontSize: 15,
+    fontWeight: FontWeight.w400,
+    color: AppColors.input,
   );
 
   static final captionBackground = GoogleFonts.inter(
