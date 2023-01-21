@@ -1,0 +1,13 @@
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    - sort_constructors_first
+    - prefer_const_constructors
+    - always_use_package_imports
+    - use_named_constants
+    - prefer_const_constructors_in_immutables
+    - prefer_const_declarations
+    - prefer_const_literals_to_create_immutables
+    - prefer_constructors_over_static_methods
+    - prefer_single_quotes

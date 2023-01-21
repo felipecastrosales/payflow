@@ -1,38 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:payflow/modules/extract/extract_page.dart';
 
-import 'home_controller.dart';
-import '../../../modules/extract/extract_page.dart';
-import '../../../modules/my_boletos/my_boletos_page.dart';
-import '../../../shared/models/user_model.dart';
-import '../../../shared/themes/app_colors.dart';
-import '../../../shared/themes/app_text_styles.dart';
+import 'package:payflow/modules/home/home_controller.dart';
+import 'package:payflow/modules/my_boletos/my_boletos_page.dart';
+import 'package:payflow/shared/models/user_model.dart';
+import 'package:payflow/shared/themes/app_colors.dart';
+import 'package:payflow/shared/themes/app_images.dart';
+import 'package:payflow/shared/themes/app_text_styles.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({
+    super.key,
+    required this.user,
+  });
+
   final UserModel user;
-  const HomePage({Key? key, required this.user}) : super(key: key);
+
   @override
-  _HomePageState createState() => _HomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    final controller = HomeController(); 
+    final controller = HomeController();
+
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(152),
+        preferredSize: const Size.fromHeight(152),
         child: Container(
           height: 152,
+          padding: const EdgeInsets.only(top: 40),
           color: AppColors.primary,
           child: Center(
             child: ListTile(
+              contentPadding: const EdgeInsets.symmetric(horizontal: 24),
               title: Text.rich(
                 TextSpan(
                   text: 'Hello, ',
                   style: AppTextStyles.titleRegular,
                   children: [
                     TextSpan(
-                      text: 'Felipe', 
+                      text: 'Felipe',
                       style: AppTextStyles.titleBoldBackground,
                     ),
                   ],
@@ -49,7 +58,9 @@ class _HomePageState extends State<HomePage> {
                   color: Colors.black,
                   borderRadius: BorderRadius.circular(5),
                   image: DecorationImage(
-                    image: NetworkImage(widget.user.photoURL!),
+                    image: NetworkImage(
+                      widget.user.photoURL ?? AppImages.logomini,
+                    ),
                   ),
                 ),
               ),
@@ -57,28 +68,41 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body:  [
-        MyBoletosPage(key: UniqueKey()), 
-        ExtractPage(key: UniqueKey()),
-      ][controller.currentPage],
-      bottomNavigationBar: Container(
+      body: ValueListenableBuilder(
+        valueListenable: controller.currentPage,
+        builder: (_, value, __) {
+          return PageView(
+            controller: controller.pageController,
+            physics: const NeverScrollableScrollPhysics(),
+            children: const [
+              MyBoletosPage(),
+              ExtractPage(),
+            ],
+          );
+        },
+      ),
+      bottomNavigationBar: SizedBox(
         height: 90,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             IconButton(
-              onPressed: () { 
-                setState(() => controller.setPage(0));
+              onPressed: () {
+                setState(() {
+                  controller.setPage(0);
+                });
               },
-              icon: Icon(
-                Icons.home, 
-                color: controller.currentPage == 0 
-                    ? AppColors.primary : AppColors.body,
+              icon: const Icon(
+                Icons.home,
+                color: AppColors.body,
               ),
             ),
             GestureDetector(
               onTap: () async {
-                await Navigator.pushNamed(context, '/barcode_scanner');
+                await Navigator.pushNamed(
+                  context,
+                  '/barcode_scanner',
+                );
                 setState(() {});
               },
               child: Container(
@@ -88,20 +112,21 @@ class _HomePageState extends State<HomePage> {
                   color: AppColors.primary,
                   borderRadius: BorderRadius.circular(5),
                 ),
-                child: Icon(
+                child: const Icon(
                   Icons.add_box_outlined,
                   color: AppColors.background,
                 ),
               ),
             ),
             IconButton(
-              onPressed: () {
-                setState(() => controller.setPage(1));
+              onPressed: () async {
+                setState(() {
+                  controller.setPage(1);
+                });
               },
-              icon: Icon(
-                Icons.description_outlined, 
-                color: controller.currentPage == 1 
-                    ? AppColors.primary : AppColors.body,
+              icon: const Icon(
+                Icons.description_outlined,
+                color: AppColors.body,
               ),
             ),
           ],
