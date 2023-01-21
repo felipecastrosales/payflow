@@ -1,12 +1,10 @@
-
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
-import '.././themes/app_colors.dart';
+import 'package:payflow/shared/themes/app_colors.dart';
 
 class AppTextStyles {
-
   static final titleHome = GoogleFonts.lexendDeca(
     fontSize: 32,
     fontWeight: FontWeight.w600,
@@ -138,5 +136,4 @@ class AppTextStyles {
     fontWeight: FontWeight.w600,
     color: AppColors.body,
   );
-
 }

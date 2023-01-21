@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:animated_card/animated_card.dart';
 
-import '../../../shared/models/boleto_model.dart';
-import '../../../shared/themes/app_text_styles.dart';
+import 'package:payflow/shared/models/boleto_model.dart';
+import 'package:payflow/shared/themes/app_text_styles.dart';
 
 class BoletoTileWidget extends StatelessWidget {
-  final BoletoModel data;
   const BoletoTileWidget({Key? key, required this.data}) : super(key: key);
+  final BoletoModel data;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class BoletoTileWidget extends StatelessWidget {
             style: AppTextStyles.trailingRegular,
             children: [
               TextSpan(
-                text: '${data.value!.toStringAsFixed(2)}',
+                text: data.value!.toStringAsFixed(2),
                 style: AppTextStyles.trailingBold,
               ),
             ],

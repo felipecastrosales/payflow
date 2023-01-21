@@ -2,17 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:animated_card/animated_card.dart';
 
-import '../../../shared/themes/app_colors.dart';
-import '../../../shared/themes/app_text_styles.dart';
+import 'package:payflow/shared/themes/app_colors.dart';
+import 'package:payflow/shared/themes/app_text_styles.dart';
 
 class InputTextWidget extends StatelessWidget {
-  final String label;
-  final IconData icon;
-  final String? initalValue;
-  final String? Function(String?)? validator;
-  final TextEditingController? controller;
-  final void Function(String value) onChanged;
-
   const InputTextWidget({
     Key? key,
     required this.label,
@@ -22,6 +15,12 @@ class InputTextWidget extends StatelessWidget {
     this.validator,
     this.controller,
   }) : super(key: key);
+  final String label;
+  final IconData icon;
+  final String? initalValue;
+  final String? Function(String?)? validator;
+  final TextEditingController? controller;
+  final void Function(String value) onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +53,7 @@ class InputTextWidget extends StatelessWidget {
                 ),
               ),
             ),
-            Divider(height: 1, thickness: 1, color: AppColors.stroke),
+            const Divider(height: 1, thickness: 1, color: AppColors.stroke),
           ],
         ),
       ),

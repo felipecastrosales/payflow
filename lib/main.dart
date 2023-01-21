@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 
-import 'app_widget.dart';
+import 'package:payflow/app_widget.dart';
 
 void main() {
-  runApp(AppFirebase());
+  runApp(const AppFirebase());
 }
 
 class AppFirebase extends StatefulWidget {
+  const AppFirebase({super.key});
+
   @override
-  _AppFirebaseState createState() => _AppFirebaseState();
+  State<AppFirebase> createState() => _AppFirebaseState();
 }
 
 class _AppFirebaseState extends State<AppFirebase> {
@@ -22,7 +24,7 @@ class _AppFirebaseState extends State<AppFirebase> {
       future: _initialization,
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          return Material(
+          return const Material(
             child: Center(
               child: Text(
                 'Oops, Unexpected error! :/',
@@ -32,9 +34,9 @@ class _AppFirebaseState extends State<AppFirebase> {
           );
         }
         if (snapshot.connectionState == ConnectionState.done) {
-          return AppWidget();
+          return const AppWidget();
         }
-        return Material(
+        return const Material(
           child: Center(child: CircularProgressIndicator()),
         );
       },

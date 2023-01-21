@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
-import '../../shared/themes/app_colors.dart';
-import '../../shared/themes/app_images.dart';
-import '../../shared/themes/app_text_styles.dart';
-import '../../shared/widgets/social_login_button/social_login_button.dart';
-import 'login_controller.dart';
+import 'package:payflow/shared/themes/app_colors.dart';
+import 'package:payflow/shared/themes/app_images.dart';
+import 'package:payflow/shared/themes/app_text_styles.dart';
+import 'package:payflow/shared/widgets/social_login_button/social_login_button.dart';
+import 'package:payflow/modules/login/login_controller.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
+
   @override
-  _LoginPageState createState() => _LoginPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
@@ -19,7 +20,7 @@ class _LoginPageState extends State<LoginPage> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: AppColors.background,
-      body: Container(
+      body: SizedBox(
         width: size.width,
         height: size.height,
         child: Stack(
@@ -59,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(40, 40, 40, 0),
                     child: SocialLoginButton(
-                      onTap: () => controller.googleSignIn(context),                      
+                      onTap: () => controller.googleSignIn(context),
                     ),
                   )
                 ],

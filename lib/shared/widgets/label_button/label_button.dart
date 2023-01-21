@@ -1,14 +1,28 @@
 import 'package:flutter/material.dart';
 
-import '/shared/themes/app_text_styles.dart';
-
+import 'package:payflow/shared/themes/app_text_styles.dart';
 
 class LabelButton extends StatelessWidget {
+  factory LabelButton.primary({
+    required String label,
+    required VoidCallback onPressed,
+  }) =>
+      LabelButton(
+        label: label,
+        onPressed: onPressed,
+        style: AppTextStyles.buttonPrimary,
+      );
 
-  final String label;
-  final VoidCallback onPressed;
-  final TextStyle style;
-  
+  factory LabelButton.heading({
+    required String label,
+    required VoidCallback onPressed,
+  }) =>
+      LabelButton(
+        label: label,
+        onPressed: onPressed,
+        style: AppTextStyles.buttonHeading,
+      );
+
   const LabelButton({
     Key? key,
     required this.label,
@@ -16,29 +30,15 @@ class LabelButton extends StatelessWidget {
     required this.style,
   }) : super(key: key);
 
-  factory LabelButton.heading({
-    required String label, 
-    required VoidCallback onPressed,
-  }) => LabelButton(
-    label: label,
-    onPressed: onPressed,
-    style: AppTextStyles.buttonHeading,
-  );
-
-  factory LabelButton.primary({
-    required String label,
-    required VoidCallback onPressed,
-  }) => LabelButton(
-    label: label,
-    onPressed: onPressed,
-    style: AppTextStyles.buttonPrimary,
-  );
+  final String label;
+  final VoidCallback onPressed;
+  final TextStyle style;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Container(
-      height: 56,
+      child: SizedBox(
+        height: 56,
         child: TextButton(
           onPressed: onPressed,
           child: Text(label, style: style),

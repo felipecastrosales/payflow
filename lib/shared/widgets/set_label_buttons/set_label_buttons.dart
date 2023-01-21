@@ -5,13 +5,6 @@ import 'package:payflow/shared/widgets/divider/divider_widget.dart';
 import 'package:payflow/shared/widgets/label_button/label_button.dart';
 
 class SetLabelButtons extends StatelessWidget {
-  final String labelPrimary;
-  final VoidCallback onTapPrimary;
-  final String labelSecondary;
-  final VoidCallback onTapSecondary;
-  final bool enablePrimaryColor;
-  final bool enableSecondaryColor;
-
   const SetLabelButtons({
     Key? key,
     required this.labelPrimary,
@@ -21,6 +14,12 @@ class SetLabelButtons extends StatelessWidget {
     this.enablePrimaryColor = false,
     this.enableSecondaryColor = false,
   }) : super(key: key);
+  final String labelPrimary;
+  final VoidCallback onTapPrimary;
+  final String labelSecondary;
+  final VoidCallback onTapSecondary;
+  final bool enablePrimaryColor;
+  final bool enableSecondaryColor;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +39,7 @@ class SetLabelButtons extends StatelessWidget {
               onPressed: onTapPrimary,
             ),
           ],
-          DividerWidget(height: 56),
+          const DividerWidget(height: 56),
           LabelButton.heading(
             label: labelSecondary,
             onPressed: onTapSecondary,

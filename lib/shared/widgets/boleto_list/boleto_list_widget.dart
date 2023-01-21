@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
-import '../../../shared/models/boleto_model.dart';
-import '../../../shared/widgets/boleto_list/boleto_list_controller.dart';
-import '../../../shared/widgets/boleto_tile/boleto_tile_widget.dart';
+import 'package:payflow/shared/models/boleto_model.dart';
+import 'package:payflow/shared/widgets/boleto_list/boleto_list_controller.dart';
+import 'package:payflow/shared/widgets/boleto_tile/boleto_tile_widget.dart';
 
 class BoletoListWidget extends StatefulWidget {
+  const BoletoListWidget({Key? key, required this.controller})
+      : super(key: key);
   final BoletoListController controller;
-  BoletoListWidget({Key? key, required this.controller}) : super(key: key);
 
-  @override 
-  _BoletoListWidgetState createState() => _BoletoListWidgetState();
+  @override
+  State<BoletoListWidget> createState() => _BoletoListWidgetState();
 }
 
 class _BoletoListWidgetState extends State<BoletoListWidget> {

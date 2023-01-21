@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '/../shared/themes/app_colors.dart';
-import '/../shared/themes/app_images.dart';
-import '/../shared/themes/app_text_styles.dart';
+import 'package:payflow/shared/themes/app_colors.dart';
+import 'package:payflow/shared/themes/app_images.dart';
+import 'package:payflow/shared/themes/app_text_styles.dart';
 
 class SocialLoginButton extends StatelessWidget {
-  final VoidCallback onTap;
   const SocialLoginButton({Key? key, required this.onTap}) : super(key: key);
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -17,13 +17,14 @@ class SocialLoginButton extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColors.shape,
           borderRadius: BorderRadius.circular(5),
-          border: Border.fromBorderSide(BorderSide(color: AppColors.stroke)),
+          border:
+              const Border.fromBorderSide(BorderSide(color: AppColors.stroke)),
         ),
         child: Row(
           children: [
             Container(
               height: 56,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 border: Border(right: BorderSide(color: AppColors.stroke)),
               ),
               child: Padding(
@@ -36,7 +37,7 @@ class SocialLoginButton extends StatelessWidget {
               child: Align(
                 alignment: Alignment.center,
                 child: Text(
-                  'Enter with Google', 
+                  'Enter with Google',
                   style: AppTextStyles.buttonGrey,
                 ),
               ),

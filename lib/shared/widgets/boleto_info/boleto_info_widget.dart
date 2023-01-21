@@ -4,8 +4,8 @@ import 'package:payflow/shared/themes/app_images.dart';
 import 'package:payflow/shared/themes/app_text_styles.dart';
 
 class BoletoInfoWidget extends StatelessWidget {
-  final int size;
   const BoletoInfoWidget({Key? key, required this.size}) : super(key: key);
+  final int size;
 
   @override
   Widget build(BuildContext context) {

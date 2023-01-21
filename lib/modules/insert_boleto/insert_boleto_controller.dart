@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../shared/models/boleto_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'package:payflow/shared/models/boleto_model.dart';
 
 class InsertBoletoController {
   final formKey = GlobalKey<FormState>();
@@ -16,17 +17,14 @@ class InsertBoletoController {
   String? validateCode(String? value) =>
       value?.isEmpty ?? true ? 'Boleto code cannot be empty' : null;
 
-  void onChange({
-    String? name, 
-    String? dueDate, 
-    double? value, 
-    String? barcode
-  }) => model = model.copyWith(
-    name: name, 
-    dueDate: dueDate, 
-    value: value, 
-    barcode: barcode,
-  ); 
+  void onChange(
+          {String? name, String? dueDate, double? value, String? barcode}) =>
+      model = model.copyWith(
+        name: name,
+        dueDate: dueDate,
+        value: value,
+        barcode: barcode,
+      );
 
   Future<void> saveBoleto() async {
     final instance = await SharedPreferences.getInstance();

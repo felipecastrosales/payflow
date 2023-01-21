@@ -7,7 +7,7 @@ import 'package:image_picker/image_picker.dart';
 
 import 'package:payflow/shared/themes/app_images.dart';
 
-import 'barcode_scanner_status.dart';
+import 'package:payflow/modules/barcode_scanner/barcode_scanner_status.dart';
 
 class BarcodeScannerController extends ChangeNotifier {
   final barcodeScanner = GoogleMlKit.vision.barcodeScanner();
@@ -48,7 +48,7 @@ class BarcodeScannerController extends ChangeNotifier {
   Future<void> scannerBarCode(InputImage inputImage) async {
     try {
       final barcodes = await barcodeScanner.processImage(inputImage);
-      var barcode;
+      String? barcode;
       for (Barcode item in barcodes) {
         barcode = item.displayValue;
       }
@@ -78,7 +78,7 @@ class BarcodeScannerController extends ChangeNotifier {
   void scanWithCamera() {
     barCodeStatus = BarcodeScannerStatus.available();
     Future.delayed(
-      Duration(seconds: 10),
+      const Duration(seconds: 10),
       () {
         barCodeStatus = BarcodeScannerStatus.available();
         if (status.hasBarcode == false) {
@@ -90,7 +90,7 @@ class BarcodeScannerController extends ChangeNotifier {
   }
 
   void listenCamera() {
-    if (cameraController?.value.isStreamingImages == false)
+    if (cameraController?.value.isStreamingImages == false) {
       cameraController?.startImageStream((cameraImage) async {
         if (status.stopScanner == false) {
           try {
@@ -103,7 +103,7 @@ class BarcodeScannerController extends ChangeNotifier {
               cameraImage.width.toDouble(),
               cameraImage.height.toDouble(),
             );
-            final imageRotation = InputImageRotation.rotation0deg;
+            const imageRotation = InputImageRotation.rotation0deg;
             final inputImageFormat =
                 InputImageFormatValue.fromRawValue(cameraImage.format.raw) ??
                     InputImageFormat.nv21;
@@ -136,6 +136,7 @@ class BarcodeScannerController extends ChangeNotifier {
           }
         }
       });
+    }
   }
 
   @override

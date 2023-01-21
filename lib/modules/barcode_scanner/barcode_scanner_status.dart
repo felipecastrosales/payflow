@@ -1,10 +1,14 @@
 import 'package:camera/camera.dart';
 
 class BarcodeScannerStatus {
-  final bool isAvailable;
-  final String error;
-  final String barcode;
-  final bool stopScanner;
+  factory BarcodeScannerStatus.barcode(String barcode) =>
+      BarcodeScannerStatus(barcode: barcode, stopScanner: true);
+
+  factory BarcodeScannerStatus.error(String message) =>
+      BarcodeScannerStatus(error: message, stopScanner: true);
+
+  factory BarcodeScannerStatus.available() =>
+      BarcodeScannerStatus(isAvailable: true, stopScanner: false);
 
   BarcodeScannerStatus({
     this.isAvailable = false,
@@ -13,14 +17,10 @@ class BarcodeScannerStatus {
     this.stopScanner = false,
   });
 
-  factory BarcodeScannerStatus.available() =>
-      BarcodeScannerStatus(isAvailable: true, stopScanner: false);
-
-  factory BarcodeScannerStatus.error(String message) =>
-      BarcodeScannerStatus(error: message, stopScanner: true);
-
-  factory BarcodeScannerStatus.barcode(String barcode) =>
-      BarcodeScannerStatus(barcode: barcode, stopScanner: true);
+  final bool isAvailable;
+  final String error;
+  final String barcode;
+  final bool stopScanner;
 
   bool get showCamera => isAvailable && error.isEmpty;
 
