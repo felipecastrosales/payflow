@@ -85,7 +85,7 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
               bottomNavigationBar: SetLabelButtons(
                 labelPrimary: 'Insert boleto code',
                 onTapPrimary: () {
-                  Navigator.pushReplacementNamed(context, "/insert_boleto");
+                  Navigator.pushReplacementNamed(context, '/insert_boleto');
                 },
                 labelSecondary: 'Add from gallery',
                 onTapSecondary: controller.scanWithImagePicker,
@@ -108,7 +108,7 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
                     },
                     labelSecondary: 'Enter code',
                     onTapSecondary: () {
-                      Navigator.pushReplacementNamed(context, "/insert_boleto");
+                      Navigator.pushReplacementNamed(context, '/insert_boleto');
                     },
                   ),
                 );

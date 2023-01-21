@@ -5,9 +5,8 @@ import 'package:camera/camera.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:image_picker/image_picker.dart';
 
-import 'package:payflow/shared/themes/app_images.dart';
-
 import 'package:payflow/modules/barcode_scanner/barcode_scanner_status.dart';
+import 'package:payflow/shared/themes/app_images.dart';
 
 class BarcodeScannerController extends ChangeNotifier {
   final barcodeScanner = GoogleMlKit.vision.barcodeScanner();
