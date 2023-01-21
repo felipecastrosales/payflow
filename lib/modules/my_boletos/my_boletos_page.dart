@@ -28,7 +28,10 @@ class _MyBoletosPageState extends State<MyBoletosPage> {
             height: 80,
             child: Stack(
               children: [
-                Container(height: 40, color: AppColors.primary),
+                Container(
+                  height: 40,
+                  color: AppColors.primary,
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24),
                   child: ValueListenableBuilder<List<BoletoModel>>(

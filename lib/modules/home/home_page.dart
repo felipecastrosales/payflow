@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:payflow/modules/extract/extract_page.dart';
+
 import 'package:payflow/modules/home/home_controller.dart';
 import 'package:payflow/modules/my_boletos/my_boletos_page.dart';
 import 'package:payflow/shared/models/user_model.dart';
@@ -30,9 +30,11 @@ class _HomePageState extends State<HomePage> {
         preferredSize: const Size.fromHeight(152),
         child: Container(
           height: 152,
+          padding: const EdgeInsets.only(top: 40),
           color: AppColors.primary,
           child: Center(
             child: ListTile(
+              contentPadding: const EdgeInsets.symmetric(horizontal: 24),
               title: Text.rich(
                 TextSpan(
                   text: 'Hello, ',
@@ -66,10 +68,19 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body: [
-        MyBoletosPage(key: UniqueKey()),
-        ExtractPage(key: UniqueKey()),
-      ][controller.currentPage],
+      body: ValueListenableBuilder(
+        valueListenable: controller.currentPage,
+        builder: (_, value, __) {
+          return PageView(
+            controller: controller.pageController,
+            physics: const NeverScrollableScrollPhysics(),
+            children: const [
+              MyBoletosPage(),
+              ExtractPage(),
+            ],
+          );
+        },
+      ),
       bottomNavigationBar: SizedBox(
         height: 90,
         child: Row(
@@ -77,13 +88,13 @@ class _HomePageState extends State<HomePage> {
           children: [
             IconButton(
               onPressed: () {
-                setState(() => controller.setPage(0));
+                setState(() {
+                  controller.setPage(0);
+                });
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.home,
-                color: controller.currentPage == 0
-                    ? AppColors.primary
-                    : AppColors.body,
+                color: AppColors.body,
               ),
             ),
             GestureDetector(
@@ -109,17 +120,13 @@ class _HomePageState extends State<HomePage> {
             ),
             IconButton(
               onPressed: () async {
-                await Navigator.pushNamed(
-                  context,
-                  '/insert_boleto',
-                );
-                setState(() {});
+                setState(() {
+                  controller.setPage(1);
+                });
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.description_outlined,
-                color: controller.currentPage == 1
-                    ? AppColors.primary
-                    : AppColors.body,
+                color: AppColors.body,
               ),
             ),
           ],
