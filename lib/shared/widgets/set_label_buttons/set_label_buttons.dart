@@ -6,14 +6,15 @@ import 'package:payflow/shared/widgets/label_button/label_button.dart';
 
 class SetLabelButtons extends StatelessWidget {
   const SetLabelButtons({
-    Key? key,
+    super.key,
     required this.labelPrimary,
     required this.onTapPrimary,
     required this.labelSecondary,
     required this.onTapSecondary,
     this.enablePrimaryColor = false,
     this.enableSecondaryColor = false,
-  }) : super(key: key);
+  });
+
   final String labelPrimary;
   final VoidCallback onTapPrimary;
   final String labelSecondary;

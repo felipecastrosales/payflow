@@ -5,15 +5,16 @@ import 'package:payflow/shared/themes/app_text_styles.dart';
 import 'package:payflow/shared/widgets/set_label_buttons/set_label_buttons.dart';
 
 class BottomSheetWidget extends StatelessWidget {
-  const BottomSheetWidget(
-      {Key? key,
-      required this.labelPrimary,
-      required this.onTapPrimary,
-      required this.labelSecondary,
-      required this.onTapSecondary,
-      required this.title,
-      required this.subtitle})
-      : super(key: key);
+  const BottomSheetWidget({
+    super.key,
+    required this.labelPrimary,
+    required this.onTapPrimary,
+    required this.labelSecondary,
+    required this.onTapSecondary,
+    required this.title,
+    required this.subtitle,
+  });
+
   final String labelPrimary;
   final VoidCallback onTapPrimary;
   final String labelSecondary;
@@ -31,7 +32,9 @@ class BottomSheetWidget extends StatelessWidget {
           child: Column(
             children: [
               Expanded(
-                child: Container(color: Colors.black.withOpacity(0.5)),
+                child: Container(
+                  color: Colors.black.withOpacity(0.5),
+                ),
               ),
               Container(
                 color: AppColors.background,

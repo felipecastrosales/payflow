@@ -9,8 +9,8 @@ import 'package:payflow/modules/splash/splash_page.dart';
 import 'package:payflow/shared/models/user_model.dart';
 import 'package:payflow/shared/themes/app_colors.dart';
 
-class AppWidget extends StatelessWidget {
-  const AppWidget({super.key});
+class PayFlowApp extends StatelessWidget {
+  const PayFlowApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,13 +34,13 @@ class AppWidget extends StatelessWidget {
       routes: {
         '/splash': (context) => const SplashPage(),
         '/home': (context) => HomePage(
-              user: ModalRoute.of(context)!.settings.arguments as UserModel,
+              user: ModalRoute.of(context)?.settings.arguments as UserModel,
             ),
         '/login': (context) => const LoginPage(),
         '/barcode_scanner': (context) => const BarcodeScannerPage(),
         '/insert_boleto': (context) => InsertBoletoPage(
               barcode: ModalRoute.of(context) != null
-                  ? ModalRoute.of(context)!.settings.arguments.toString()
+                  ? ModalRoute.of(context)?.settings.arguments.toString() ?? ''
                   : null,
             ),
       },

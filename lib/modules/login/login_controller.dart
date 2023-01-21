@@ -20,8 +20,8 @@ class LoginController {
     try {
       final response = await googleSignIn.signIn();
       final user = UserModel(
-        name: response!.displayName!,
-        photoURL: response.photoUrl,
+        name: response?.displayName as String,
+        photoURL: response?.photoUrl as String,
       );
       if (!mounted) return;
       authController.setUser(context, user);

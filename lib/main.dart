@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 
-import 'package:payflow/app_widget.dart';
+import 'package:payflow/payflow_app.dart';
 
 void main() {
   runApp(const AppFirebase());
@@ -34,7 +34,7 @@ class _AppFirebaseState extends State<AppFirebase> {
           );
         }
         if (snapshot.connectionState == ConnectionState.done) {
-          return const AppWidget();
+          return const PayFlowApp();
         }
         return const Material(
           child: Center(child: CircularProgressIndicator()),

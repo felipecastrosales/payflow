@@ -5,7 +5,10 @@ class UserModel {
       UserModel.fromMap(jsonDecode(json));
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
-    return UserModel(name: map['name'], photoURL: map['photoURL']);
+    return UserModel(
+      name: map['name'],
+      photoURL: map['photoURL'],
+    );
   }
 
   UserModel({required this.name, this.photoURL});

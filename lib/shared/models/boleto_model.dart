@@ -13,7 +13,13 @@ class BoletoModel {
     );
   }
 
-  BoletoModel({this.name, this.dueDate, this.value, this.barcode});
+  BoletoModel({
+    this.name,
+    this.dueDate,
+    this.value,
+    this.barcode,
+  });
+
   final String? name;
   final String? dueDate;
   final double? value;
@@ -45,11 +51,6 @@ class BoletoModel {
   String toJson() => json.encode(toMap());
 
   @override
-  String toString() {
-    return 'BoletoModel(name: $name, dueDate: $dueDate, value: $value, barcode: $barcode)';
-  }
-
-  @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
     return other is BoletoModel &&
@@ -62,5 +63,10 @@ class BoletoModel {
   @override
   int get hashCode {
     return name.hashCode ^ dueDate.hashCode ^ value.hashCode ^ barcode.hashCode;
+  }
+
+  @override
+  String toString() {
+    return 'BoletoModel(name: $name, dueDate: $dueDate, value: $value, barcode: $barcode)';
   }
 }

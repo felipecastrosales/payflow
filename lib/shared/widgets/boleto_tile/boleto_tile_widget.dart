@@ -6,7 +6,11 @@ import 'package:payflow/shared/models/boleto_model.dart';
 import 'package:payflow/shared/themes/app_text_styles.dart';
 
 class BoletoTileWidget extends StatelessWidget {
-  const BoletoTileWidget({Key? key, required this.data}) : super(key: key);
+  const BoletoTileWidget({
+    super.key,
+    required this.data,
+  });
+
   final BoletoModel data;
 
   @override
@@ -17,7 +21,10 @@ class BoletoTileWidget extends StatelessWidget {
         padding: const EdgeInsets.only(bottom: 16),
         child: ListTile(
           contentPadding: EdgeInsets.zero,
-          title: Text(data.name!, style: AppTextStyles.titleListTile),
+          title: Text(
+            data.name ?? '',
+            style: AppTextStyles.titleListTile,
+          ),
           subtitle: Text(
             'Expires on: ${data.dueDate}',
             style: AppTextStyles.captionBody,
@@ -27,7 +34,7 @@ class BoletoTileWidget extends StatelessWidget {
             style: AppTextStyles.trailingRegular,
             children: [
               TextSpan(
-                text: data.value!.toStringAsFixed(2),
+                text: data.value?.toStringAsFixed(2),
                 style: AppTextStyles.trailingBold,
               ),
             ],

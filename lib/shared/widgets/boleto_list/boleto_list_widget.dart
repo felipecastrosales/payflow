@@ -5,8 +5,11 @@ import 'package:payflow/shared/widgets/boleto_list/boleto_list_controller.dart';
 import 'package:payflow/shared/widgets/boleto_tile/boleto_tile_widget.dart';
 
 class BoletoListWidget extends StatefulWidget {
-  const BoletoListWidget({Key? key, required this.controller})
-      : super(key: key);
+  const BoletoListWidget({
+    super.key,
+    required this.controller,
+  });
+
   final BoletoListController controller;
 
   @override
@@ -19,7 +22,11 @@ class _BoletoListWidgetState extends State<BoletoListWidget> {
     return ValueListenableBuilder<List<BoletoModel>>(
       valueListenable: widget.controller.boletosNotifier,
       builder: (_, boletos, __) => Column(
-        children: boletos.map((e) => BoletoTileWidget(data: e)).toList(),
+        children: boletos
+            .map(
+              (boleto) => BoletoTileWidget(data: boleto),
+            )
+            .toList(),
       ),
     );
   }

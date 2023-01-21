@@ -5,7 +5,11 @@ import 'package:payflow/shared/themes/app_images.dart';
 import 'package:payflow/shared/themes/app_text_styles.dart';
 
 class SocialLoginButton extends StatelessWidget {
-  const SocialLoginButton({Key? key, required this.onTap}) : super(key: key);
+  const SocialLoginButton({
+    super.key,
+    required this.onTap,
+  });
+
   final VoidCallback onTap;
 
   @override
@@ -17,15 +21,18 @@ class SocialLoginButton extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColors.shape,
           borderRadius: BorderRadius.circular(5),
-          border:
-              const Border.fromBorderSide(BorderSide(color: AppColors.stroke)),
+          border: const Border.fromBorderSide(
+            BorderSide(color: AppColors.stroke),
+          ),
         ),
         child: Row(
           children: [
             Container(
               height: 56,
               decoration: const BoxDecoration(
-                border: Border(right: BorderSide(color: AppColors.stroke)),
+                border: Border(
+                  right: BorderSide(color: AppColors.stroke),
+                ),
               ),
               child: Padding(
                 padding: const EdgeInsets.only(left: 2, right: 2),

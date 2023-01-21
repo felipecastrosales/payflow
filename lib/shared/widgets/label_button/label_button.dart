@@ -24,11 +24,11 @@ class LabelButton extends StatelessWidget {
       );
 
   const LabelButton({
-    Key? key,
+    super.key,
     required this.label,
     required this.onPressed,
     required this.style,
-  }) : super(key: key);
+  });
 
   final String label;
   final VoidCallback onPressed;
@@ -41,7 +41,10 @@ class LabelButton extends StatelessWidget {
         height: 56,
         child: TextButton(
           onPressed: onPressed,
-          child: Text(label, style: style),
+          child: Text(
+            label,
+            style: style,
+          ),
         ),
       ),
     );

@@ -10,7 +10,11 @@ import 'package:payflow/shared/widgets/input_text/input_text_widget.dart';
 import 'package:payflow/shared/widgets/set_label_buttons/set_label_buttons.dart';
 
 class InsertBoletoPage extends StatefulWidget {
-  const InsertBoletoPage({Key? key, this.barcode}) : super(key: key);
+  const InsertBoletoPage({
+    Key? key,
+    this.barcode,
+  }) : super(key: key);
+
   final String? barcode;
 
   @override
@@ -18,14 +22,16 @@ class InsertBoletoPage extends StatefulWidget {
 }
 
 class _InsertBoletoPageState extends State<InsertBoletoPage> {
+  final formKey = GlobalKey<FormState>();
   final controller = InsertBoletoController();
+  final barcodeInputTextController = TextEditingController();
+  final dueDateInputTextController = MaskedTextController(mask: '00/00/0000');
+
   final moneyInputTextController = MoneyMaskedTextController(
     leftSymbol: '\$',
     initialValue: 0,
     decimalSeparator: ',',
   );
-  final dueDateInputTextController = MaskedTextController(mask: '00/00/0000');
-  final barcodeInputTextController = TextEditingController();
 
   @override
   void initState() {
@@ -59,7 +65,7 @@ class _InsertBoletoPageState extends State<InsertBoletoPage> {
                 ),
               ),
               Form(
-                key: controller.formKey,
+                key: formKey,
                 child: Column(
                   children: [
                     InputTextWidget(

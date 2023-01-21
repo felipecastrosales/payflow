@@ -23,9 +23,7 @@ class BarcodeScannerStatus {
   final bool stopScanner;
 
   bool get showCamera => isAvailable && error.isEmpty;
-
   bool get hasError => error.isNotEmpty;
-
   bool get hasBarcode => barcode.isNotEmpty;
 
   BarcodeScannerStatus copyWith({

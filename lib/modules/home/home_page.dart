@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:payflow/modules/home/home_controller.dart';
 import 'package:payflow/modules/extract/extract_page.dart';
+import 'package:payflow/modules/home/home_controller.dart';
 import 'package:payflow/modules/my_boletos/my_boletos_page.dart';
 import 'package:payflow/shared/models/user_model.dart';
 import 'package:payflow/shared/themes/app_colors.dart';
+import 'package:payflow/shared/themes/app_images.dart';
 import 'package:payflow/shared/themes/app_text_styles.dart';
 
 class HomePage extends StatefulWidget {
@@ -23,6 +24,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final controller = HomeController();
+
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(152),
@@ -54,7 +56,9 @@ class _HomePageState extends State<HomePage> {
                   color: Colors.black,
                   borderRadius: BorderRadius.circular(5),
                   image: DecorationImage(
-                    image: NetworkImage(widget.user.photoURL!),
+                    image: NetworkImage(
+                      widget.user.photoURL ?? AppImages.logomini,
+                    ),
                   ),
                 ),
               ),
@@ -84,7 +88,10 @@ class _HomePageState extends State<HomePage> {
             ),
             GestureDetector(
               onTap: () async {
-                await Navigator.pushNamed(context, '/barcode_scanner');
+                await Navigator.pushNamed(
+                  context,
+                  '/barcode_scanner',
+                );
                 setState(() {});
               },
               child: Container(
