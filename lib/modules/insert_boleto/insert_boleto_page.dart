@@ -18,16 +18,15 @@ class InsertBoletoPage extends StatefulWidget {
 }
 
 class _InsertBoletoPageState extends State<InsertBoletoPage> {
-
   final controller = InsertBoletoController();
   final moneyInputTextController = MoneyMaskedTextController(
-    leftSymbol: '\$', 
-    initialValue: 0, 
+    leftSymbol: '\$',
+    initialValue: 0,
     decimalSeparator: ',',
   );
   final dueDateInputTextController = MaskedTextController(mask: '00/00/0000');
   final barcodeInputTextController = TextEditingController();
-  
+
   @override
   void initState() {
     if (widget.barcode != null) {
@@ -72,7 +71,7 @@ class _InsertBoletoPageState extends State<InsertBoletoPage> {
                     InputTextWidget(
                       controller: dueDateInputTextController,
                       label: 'Due date',
-                      icon: FontAwesomeIcons.timesCircle,
+                      icon: FontAwesomeIcons.circleXmark,
                       onChanged: (value) => controller.onChange(dueDate: value),
                       validator: controller.validateDueDate,
                     ),
