@@ -51,7 +51,7 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
                   child: controller.cameraController?.buildPreview(),
                 );
               } else {
-                return Container();
+                return const SizedBox();
               }
             },
           ),
@@ -113,7 +113,7 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
                   ),
                 );
               } else {
-                return Container();
+                return const SizedBox();
               }
             },
           ),
