@@ -14,6 +14,7 @@ class InputTextWidget extends StatelessWidget {
     this.initalValue,
     this.validator,
     this.controller,
+    this.keyboardType = TextInputType.number,
   });
 
   final String label;
@@ -22,6 +23,7 @@ class InputTextWidget extends StatelessWidget {
   final String? Function(String?)? validator;
   final TextEditingController? controller;
   final void Function(String value) onChanged;
+  final TextInputType keyboardType;
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +34,7 @@ class InputTextWidget extends StatelessWidget {
         child: Column(
           children: [
             TextFormField(
+              keyboardType: keyboardType,
               controller: controller,
               initialValue: initalValue,
               validator: validator,

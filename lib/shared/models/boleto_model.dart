@@ -13,17 +13,26 @@ class BoletoModel {
     );
   }
 
+  factory BoletoModel.empty() {
+    return BoletoModel(
+      name: '',
+      dueDate: '',
+      value: 0,
+      barcode: '',
+    );
+  }
+
   BoletoModel({
-    this.name,
-    this.dueDate,
-    this.value,
-    this.barcode,
+    required this.name,
+    required this.dueDate,
+    required this.value,
+    required this.barcode,
   });
 
-  final String? name;
-  final String? dueDate;
-  final double? value;
-  final String? barcode;
+  final String name;
+  final String dueDate;
+  final double value;
+  final String barcode;
 
   BoletoModel copyWith({
     String? name,

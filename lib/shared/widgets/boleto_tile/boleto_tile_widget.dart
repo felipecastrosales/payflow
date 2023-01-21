@@ -22,7 +22,7 @@ class BoletoTileWidget extends StatelessWidget {
         child: ListTile(
           contentPadding: EdgeInsets.zero,
           title: Text(
-            data.name ?? '',
+            data.name,
             style: AppTextStyles.titleListTile,
           ),
           subtitle: Text(
@@ -34,7 +34,7 @@ class BoletoTileWidget extends StatelessWidget {
             style: AppTextStyles.trailingRegular,
             children: [
               TextSpan(
-                text: data.value?.toStringAsFixed(2),
+                text: data.value.toStringAsFixed(2),
                 style: AppTextStyles.trailingBold,
               ),
             ],

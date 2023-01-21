@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:payflow/shared/models/boleto_model.dart';
 
 class InsertBoletoController {
-  BoletoModel model = BoletoModel();
+  BoletoModel model = BoletoModel.empty();
 
   String? validateName(String? value) =>
       value?.isEmpty ?? true ? 'The name cannot be empty' : null;
@@ -36,9 +36,5 @@ class InsertBoletoController {
     boletos.add(model.toJson());
     await instance.setStringList('boletos', boletos);
     return;
-  }
-
-  Future<void> registerBoleto() async {
-    return await saveBoleto();
   }
 }

@@ -11,11 +11,11 @@ import 'package:payflow/shared/widgets/set_label_buttons/set_label_buttons.dart'
 
 class InsertBoletoPage extends StatefulWidget {
   const InsertBoletoPage({
-    Key? key,
-    this.barcode,
-  }) : super(key: key);
+    super.key,
+    required this.barcode,
+  });
 
-  final String? barcode;
+  final String barcode;
 
   @override
   State<InsertBoletoPage> createState() => _InsertBoletoPageState();
@@ -35,9 +35,6 @@ class _InsertBoletoPageState extends State<InsertBoletoPage> {
 
   @override
   void initState() {
-    if (widget.barcode != null) {
-      barcodeInputTextController.text = widget.barcode!;
-    }
     super.initState();
   }
 
@@ -73,6 +70,7 @@ class _InsertBoletoPageState extends State<InsertBoletoPage> {
                       icon: Icons.description_outlined,
                       onChanged: (value) => controller.onChange(name: value),
                       validator: controller.validateName,
+                      keyboardType: TextInputType.name,
                     ),
                     InputTextWidget(
                       controller: dueDateInputTextController,
@@ -98,7 +96,7 @@ class _InsertBoletoPageState extends State<InsertBoletoPage> {
                       icon: FontAwesomeIcons.barcode,
                       validator: controller.validateCode,
                       onChanged: (value) => controller.onChange(barcode: value),
-                    )
+                    ),
                   ],
                 ),
               )
@@ -109,7 +107,11 @@ class _InsertBoletoPageState extends State<InsertBoletoPage> {
       bottomNavigationBar: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Divider(height: 1, thickness: 1, color: AppColors.stroke),
+          const Divider(
+            height: 1,
+            thickness: 1,
+            color: AppColors.stroke,
+          ),
           SetLabelButtons(
             enableSecondaryColor: true,
             labelPrimary: 'Cancel',
@@ -118,9 +120,12 @@ class _InsertBoletoPageState extends State<InsertBoletoPage> {
             },
             labelSecondary: 'Register',
             onTapSecondary: () async {
-              await controller.registerBoleto();
-              if (!mounted) return;
-              Navigator.pop(context);
+              if (formKey.currentState?.validate() ?? false) {
+                await controller.saveBoleto();
+                if (!mounted) return;
+                Navigator.pop(context);
+                setState(() {});
+              }
             },
           ),
         ],

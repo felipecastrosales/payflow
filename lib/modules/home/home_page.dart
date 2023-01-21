@@ -108,8 +108,12 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             IconButton(
-              onPressed: () {
-                setState(() => controller.setPage(1));
+              onPressed: () async {
+                await Navigator.pushNamed(
+                  context,
+                  '/insert_boleto',
+                );
+                setState(() {});
               },
               icon: Icon(
                 Icons.description_outlined,

@@ -19,7 +19,7 @@ class BoletoListController {
       final response = instance.getStringList('boletos');
       boletos =
           response?.map((boleto) => BoletoModel.fromJson(boleto)).toList() ??
-              <BoletoModel>[];
+              [];
     } catch (e, s) {
       debugPrint('Error when getting boletos ${e.toString()}');
       debugPrint('Stack when getting boletos ${s.toString()}');

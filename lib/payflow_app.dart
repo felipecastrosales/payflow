@@ -39,9 +39,8 @@ class PayFlowApp extends StatelessWidget {
         '/login': (context) => const LoginPage(),
         '/barcode_scanner': (context) => const BarcodeScannerPage(),
         '/insert_boleto': (context) => InsertBoletoPage(
-              barcode: ModalRoute.of(context) != null
-                  ? ModalRoute.of(context)?.settings.arguments.toString() ?? ''
-                  : null,
+              barcode: ModalRoute.of(context)?.settings.arguments.toString() ??
+                  '123456',
             ),
       },
     );
