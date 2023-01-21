@@ -13,6 +13,7 @@ dependencies:
   firebase_core: ^2.4.1
   flutter:
     sdk: flutter
+  flutter_launcher_icons: ^0.11.0
   flutter_masked_text2: ^0.9.1
   font_awesome_flutter: ^10.3.0
   google_fonts: ^3.0.1
@@ -31,6 +32,18 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-
   assets:
     - assets/images/
+
+flutter_icons:
+  image_path: "assets/images/logofull.png"
+  image_path_android: "assets/images/logofull.png"
+  image_path_ios: "assets/images/logofull.png"
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  web:
+    generate: true
+    image_path: "assets/images/icon-1024x1024.png"
+    background_color: "#hexcode"
+    theme_color: "#hexcode"
