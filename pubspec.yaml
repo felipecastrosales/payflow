@@ -1,32 +1,31 @@
 name: payflow
 description: PayFlow App
 publish_to: 'none'
-version: 2.0.0
+version: 2.0.1
 
 environment:
-  sdk: ">=2.18.5 <3.0.0"
+  sdk: ">=3.4.4 <4.0.0"
 
 dependencies:
   animated_card: ^2.0.0
-  camera: ^0.10.2+1
-  cupertino_icons: ^1.0.2
-  firebase_core: ^2.4.1
+  camera: ^0.11.0+2
+  cupertino_icons: ^1.0.8
+  firebase_core: ^3.3.0
   flutter:
     sdk: flutter
-  flutter_launcher_icons: ^0.11.0
+  flutter_launcher_icons: ^0.13.1
   flutter_masked_text2: ^0.9.1
-  font_awesome_flutter: ^10.3.0
-  google_fonts: ^3.0.1
-  google_ml_kit: ^0.13.0
-  google_sign_in: ^5.4.3
-  google_sign_in_web: ^0.10.0
-  google_sign_in_web_redirect: ^0.0.1
-  image_picker: ^0.8.6+1
-  image_picker_for_web: ^2.1.10
-  shared_preferences: ^2.0.17
+  font_awesome_flutter: ^10.7.0
+  google_fonts: ^6.2.1
+  google_mlkit_barcode_scanning: ^0.12.0
+  google_sign_in: ^6.2.1
+  google_sign_in_web: ^0.12.4
+  image_picker: ^1.1.2
+  image_picker_for_web: ^3.0.5
+  shared_preferences: ^2.3.2
 
 dev_dependencies:
-  flutter_lints: ^2.0.1
+  flutter_lints: ^4.0.0
   flutter_test:
     sdk: flutter
 

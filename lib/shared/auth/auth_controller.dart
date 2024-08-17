@@ -29,19 +29,18 @@ class AuthController {
   }
 
   Future<void> currentUser(
-    BuildContext context, [
-    bool mounted = true,
-  ]) async {
+    BuildContext context,
+  ) async {
     final instance = await SharedPreferences.getInstance();
     await Future.delayed(const Duration(seconds: 2));
 
     if (instance.containsKey('user')) {
       final json = instance.get('user') as String;
-      if (!mounted) return;
+      if (!context.mounted) return;
       setUser(context, UserModel.fromJson(json));
       return;
     } else {
-      if (!mounted) return;
+      if (!context.mounted) return;
       setUser(context, null);
     }
   }

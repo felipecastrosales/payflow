@@ -2,14 +2,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:camera/camera.dart';
-import 'package:google_ml_kit/google_ml_kit.dart';
+import 'package:google_mlkit_barcode_scanning/google_mlkit_barcode_scanning.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'package:payflow/modules/barcode_scanner/barcode_scanner_status.dart';
 import 'package:payflow/shared/themes/app_images.dart';
 
 class BarcodeScannerController extends ChangeNotifier {
-  final barcodeScanner = GoogleMlKit.vision.barcodeScanner();
+  final barcodeScanner = BarcodeScanner();
 
   final statusNotifier = ValueNotifier<BarcodeScannerStatus>(
     BarcodeScannerStatus(),
@@ -23,7 +23,9 @@ class BarcodeScannerController extends ChangeNotifier {
   set barCodeStatus(BarcodeScannerStatus status) =>
       statusNotifier.value = status;
 
-  void getAvailableCameras() async {
+  static const defaultSize = 400.0;
+
+  Future<void> getAvailableCameras() async {
     try {
       final response = await availableCameras();
       final camera = response.firstWhere(
@@ -108,24 +110,25 @@ class BarcodeScannerController extends ChangeNotifier {
                     InputImageFormat.nv21;
             final planeData = cameraImage.planes.map(
               (plane) {
-                return InputImagePlaneMetadata(
+                return InputImageMetadata(
                   bytesPerRow: plane.bytesPerRow,
-                  height: plane.height,
-                  width: plane.width,
+                  rotation: imageRotation,
+                  format: inputImageFormat,
+                  size: imageSize,
                 );
               },
             ).toList();
 
-            final inputImageData = InputImageData(
+            final metadata = InputImageMetadata(
               size: imageSize,
-              imageRotation: imageRotation,
-              inputImageFormat: inputImageFormat,
-              planeData: planeData,
+              rotation: imageRotation,
+              format: inputImageFormat,
+              bytesPerRow: planeData.first.bytesPerRow,
             );
 
             final inputImageCamera = InputImage.fromBytes(
               bytes: bytes,
-              inputImageData: inputImageData,
+              metadata: metadata,
             );
 
             scannerBarCode(inputImageCamera);

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
@@ -26,6 +28,7 @@ class _AppWidgetState extends State<AppWidget> {
       future: firebaseInitialize,
       builder: (context, snapshot) {
         if (snapshot.hasError) {
+          log('Error when initializing Firebase: ${snapshot.error}');
           return const Material(
             child: Center(
               child: Text(
