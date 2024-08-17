@@ -50,6 +50,9 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
             builder: (_, status, __) {
               if (status.showCamera) {
                 return Container(
+                  color: Colors.red,
+                  height: MediaQuery.of(context).size.height,
+                  width: 800,
                   child: controller.cameraController?.buildPreview(),
                 );
               } else {
@@ -71,26 +74,6 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
                 leading: const BackButton(
                   color: AppColors.background,
                 ),
-              ),
-              body: Column(
-                children: [
-                  Expanded(
-                    child: Container(
-                      color: Colors.black,
-                    ),
-                  ),
-                  Expanded(
-                    flex: 2,
-                    child: Container(
-                      color: Colors.transparent,
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      color: Colors.black87,
-                    ),
-                  )
-                ],
               ),
               bottomNavigationBar: SetLabelButtons(
                 labelPrimary: 'Insert boleto code',

@@ -122,7 +122,7 @@ class _InsertBoletoPageState extends State<InsertBoletoPage> {
             onTapSecondary: () async {
               if (formKey.currentState?.validate() ?? false) {
                 await controller.saveBoleto();
-                if (!mounted) return;
+                if (!context.mounted) return;
                 Navigator.pop(context);
                 setState(() {});
               }
